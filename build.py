@@ -8,7 +8,7 @@ def build_executable():
     new_version = update_version()
     subprocess.run([
         "pyinstaller",
-        "--name=ManualSearch",
+        "--name=ManualSearch32bit",
         "--windowed",
         "--add-data", "utils/config.ini:.",
         "--add-data", "templates:templates",
