@@ -7,12 +7,11 @@ from scripts.version_manager import update_version
 def build_executable():
     new_version = update_version()
     subprocess.run([
-        "python", "-m", "nuitka",
-        "--windows-console-mode=disable",
-        "--windows-icon-from-ico=assets/ManualSearch.ico",
-        "--include-data-file=utils/config.ini=config.ini",
-        "--include-data-dir=templates=templates",
-        "--output-filename=ManualSearch.exe",
+        "pyinstaller",
+        "--name=ManualSearch",
+        "--windowed",
+        "--add-data", "utils/config.ini:.",
+        "--add-data", "templates:templates",
         "main.py"
     ])
 
