@@ -51,7 +51,8 @@ def create_jinja_environment() -> Environment:
 def open_text_file(file_path: str, search_terms: List[str], html_font_size: int) -> None:
     try:
         highlighted_html_path = highlight_text_file(file_path, search_terms, html_font_size)
-        webbrowser.open(f'file://{highlighted_html_path}')
+        file_url = highlighted_html_path.replace('\\', '/')
+        webbrowser.open(f'file:///{file_url}')
     except Exception as e:
         raise Exception(f"テキストファイルを開けませんでした: {str(e)}")
 
